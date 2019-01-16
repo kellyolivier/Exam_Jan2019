@@ -1,34 +1,52 @@
-public class Triangle implements Shape
+public class Triangle extends Shape implements ShapeInterface
 {
-    private String id;
+
     private double sideOne;
     private double sideTwo;
     private double sideThree;
-    private String color;
 
-    public Triangle(String newId, String newSideOne, String newSideTwo, String newSideThree, String newColor)
+
+    public Triangle(String newType, String newId, String newSideOne, String newSideTwo, String newSideThree, String newColor)
     {
-        id = newId;
+        super(newType, newId, newColor);
         sideOne = Double.parseDouble(newSideOne);
         sideTwo = Double.parseDouble(newSideTwo);
         sideThree = Double.parseDouble(newSideThree);
-        color = newColor;
+
     }
 
-    public String toString()
+    public double getArea()
     {
+        double perimeter = getPerimeter();
+        double area = perimeter * (perimeter - sideOne)*(perimeter - sideTwo) *(perimeter - sideThree);
+        area = Math.abs(area); //to avoid taking sqrt of a negative, since area cant be negative to begin with
+        area = Math.sqrt(area);
 
+        area = roundToTwoDecimals(area);
+
+        return area;
     }
-    public String getKind()
+
+    public double getPerimeter()
     {
-
+        double perimeter = (sideOne + sideThree + sideTwo) / 2.0;
+        perimeter = roundToTwoDecimals(perimeter);
+        return perimeter;
     }
-    public String getDetailString()
+
+    public double getSideOne()
     {
-
+        return sideOne;
     }
-    public int getID()
+
+    public double getSideTwo()
     {
-
+        return sideTwo;
     }
+
+    public double getSideThree()
+    {
+        return sideThree;
+    }
+
 }

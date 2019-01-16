@@ -1,32 +1,40 @@
-public class Rectangle implements Shape {
+public class Rectangle extends Shape implements ShapeInterface {
 
-    private String id;
     private double length;
     private double width;
-    private String color;
 
-    public Rectangle(String newId, String newLength, String newWidth, String newColor)
+
+    public Rectangle(String newType, String newId, String newLength, String newWidth, String newColor)
     {
-        id = newId;
+        super(newType, newId, newColor);
         length = Double.parseDouble(newLength);
         width = Double.parseDouble(newWidth);
-        color = newColor;
-    }
-
-    public String toString()
-    {
 
     }
-    public String getKind()
-    {
 
+
+    public double getPerimeter()
+    {
+        double perimeter = length + length + width + width;
+        perimeter = roundToTwoDecimals(perimeter);
+        return perimeter;
     }
-    public String getDetailString()
-    {
 
+    public double getArea()
+    {
+        double area = length * width;
+        area = roundToTwoDecimals(area);
+        return area;
     }
-    public int getID()
-    {
 
+
+    public double getLength()
+    {
+        return length;
+    }
+
+    public double getWidth()
+    {
+        return width;
     }
 }

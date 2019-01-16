@@ -1,30 +1,30 @@
-public class Circle implements Shape
+public class Circle extends Shape implements ShapeInterface
 {
-    private String id;
     private double radius;
-    private String color;
 
-    public Circle(String newId, String newRadius, String newColor)
+    public Circle(String newType, String newId, String newRadius, String newColor)
     {
-        id = newId;
+        super(newType, newId, newColor);
         radius = Double.parseDouble(newRadius);
-        color = newColor;
     }
 
-    public String toString()
+    public double getPerimeter()
     {
-
+        double circumference = 2 * Math.PI * radius;
+        circumference = roundToTwoDecimals(circumference);
+        return circumference;
     }
-    public String getKind()
+
+    public double getArea()
     {
-
+        double area = 3.14 * radius * radius;
+        area = roundToTwoDecimals(area);
+        return area;
     }
-    public String getDetailString()
-    {
 
+    public double getRadius() {
+        return radius;
     }
-    public int getID()
-    {
 
-    }
+
 }

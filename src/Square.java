@@ -1,30 +1,32 @@
-public class Square implements Shape
+public class Square extends Shape implements ShapeInterface
 {
-    private String id;
+
     private double side;
-    private String color;
 
-    public Square(String newId, String newSide, String newColor)
+
+    public Square(String newType, String newId, String newSide, String newColor)
     {
-        id = newId;
+        super(newType, newId, newColor);
         side = Double.parseDouble(newSide);
-        color = newColor;
     }
 
-    public String toString()
+    public double getArea()
     {
-
+        double area = side * side;
+        area = roundToTwoDecimals(area);
+        return area;
     }
-    public String getKind()
+
+    public double getPerimeter()
     {
-
+        double perimeter = side * 4;
+        perimeter = roundToTwoDecimals(perimeter);
+        return perimeter;
     }
-    public String getDetailString()
+
+    public double getSide()
     {
-
+        return side;
     }
-    public int getID()
-    {
 
-    }
 }
